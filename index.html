@@ -40,25 +40,25 @@
         margin-bottom: 24px;
       }
 
-      .form__label {
+      .form label {
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 8px;
       }
 
-      .form__input {
+      .form input {
         width: 100%;
         margin-bottom: 16px;
         padding: 8px;
         border-radius: 4px;
-        border: 1px solid #ccc;
+        border: 1px solid #efeeef;
       }
 
-      .form__button {
+      .form button {
         display: inline-block;
         padding: 8px 16px;
-        background-color: #4caf50;
-        color: #fff;
+        background-color: #efeeef;
+        color: #000;
         font-size: 16px;
         font-weight: bold;
         text-align: center;
@@ -68,8 +68,8 @@
         cursor: pointer;
       }
 
-      .form__button:hover {
-        background-color: #388e3c;
+      .form button:hover {
+        background-color: #ddd;
       }
 
       .dialog {
@@ -114,10 +114,22 @@
           box-shadow: none;
         }
 
-        .form__button {
-          width: 100%;
+        .form {
+          flex-direction: column;
         }
 
+        .form input {
+          width: 100%;
+          padding: 16px;
+          margin-bottom: 16px;
+        }
+        
+        .form button {
+          width: 100%;
+          font-size: 16px;
+          padding: 8px;
+        }
+        
         .dialog {
           width: 80%;
         }
@@ -126,7 +138,7 @@
   </head>
 <body>
     <div class="container">
-        <form action="photo.html" method="GET" enctype="multipart/form-data">
+        <form action="photo.html" method="GET" enctype="multipart/form-data" class="form">
           <input type="file" name="image" accept="image/*" id="imageInput">
           <button type="submit" id="sendButton">送信</button>
         </form>
