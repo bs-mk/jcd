@@ -13,6 +13,7 @@
 
       body {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -30,6 +31,10 @@
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .container + .container {
+        margin-top: 12vh;
       }
 
       .form {
@@ -54,7 +59,7 @@
         border: 1px solid #efeeef;
       }
 
-      .form button {
+      .form button, #PhotoListButton {
         display: inline-block;
         padding: 8px 16px;
         background-color: #efeeef;
@@ -66,9 +71,10 @@
         border-radius: 4px;
         transition: background-color 0.2s ease-in-out;
         cursor: pointer;
+        width: 40%;
       }
 
-      .form button:hover {
+      .form button:hover, #PhotoListButton:hover{
         background-color: #ddd;
       }
 
@@ -124,7 +130,7 @@
           margin-bottom: 16px;
         }
         
-        .form button {
+        .form button, #PhotoListButton {
           width: 100%;
           font-size: 16px;
           padding: 8px;
@@ -136,23 +142,32 @@
       }
     </style>
   </head>
-<body>
+  <body>
     <div class="container">
-        <form action="photo.html" method="GET" enctype="multipart/form-data" class="form">
-          <input type="file" name="image" accept="image/*" id="imageInput">
-          <button type="submit" id="sendButton">送信</button>
-        </form>
+      <form action="photo.html" method="GET" enctype="multipart/form-data" class="form">
+        <input type="file" name="image" accept="image/*" id="imageInput">
+        <button type="submit" id="sendButton">送信</button>
+      </form>
     </div>
-
+    <div class="container">
+      <button id="PhotoListButton">写真一覧を表示する</button>
+    </div>
+    
     <script>
-        const sendButton = document.querySelector('#sendButton');
-        sendButton.addEventListener('click', () => {
+      const sendButton = document.querySelector('#sendButton');
+      sendButton.addEventListener('click', () => {
         const imageInput = document.querySelector('#imageInput');
         if (imageInput.files.length === 0) {
-            alert('画像を選択してください');
+          alert('画像を選択してください');
         } else {
-            confirm('画像を送信しました');
+          confirm('画像を送信しました');
         }
-        });
+      });
+      
+      const PhotoListButton = document.querySelector('#PhotoListButton');
+      PhotoListButton.addEventListener('click', () => {
+        location.href = "photolist.html";
+      });
     </script>
-</body>
+  </body>
+</html>

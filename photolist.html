@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>写真一覧</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.card {
+			width: calc(33.33% - 20px);
+			margin-bottom: 40px;
+			background-color: #fff;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			border-radius: 4px;
+			overflow: hidden;
+			transition: transform 0.2s ease-in-out;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+		}
+
+		.card img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.card h2 {
+			padding: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			text-align: center;
+		}
+
+		@media only screen and (max-width: 768px) {
+			.card {
+				width: calc(50% - 20px);
+			}
+		}
+
+		@media only screen and (max-width: 480px) {
+			.card {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<!-- ここに写真のカードを表示するためのコードを追加 -->
+	</div>
+
+	<script>
+		const container = document.querySelector('.container');
+
+		for (let i = 0; i < 35; i++) {
+			const card = document.createElement('div');
+			card.classList.add('card');
+
+			const img = document.createElement('img');
+			img.src = `img/image${i}.jpeg`;
+			img.alt = `image${i}`;
+			card.appendChild(img);
+
+			const h2 = document.createElement('h2');
+			h2.textContent = `Image ${i}`;
+			card.appendChild(h2);
+
+			container.appendChild(card);
+		}
+	</script>
+</body>
+</html>
