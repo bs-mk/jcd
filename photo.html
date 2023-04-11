@@ -35,7 +35,7 @@
         0% {
           transform: translateY(-50px) rotate(0deg);
         }
-        50% {
+        90% {
           transform: translateY(calc(100vh + 300px)) rotate(360deg);
         }
         100% {
@@ -70,7 +70,7 @@
         }
       } else {
         // ブレークポイント450px以下の場合、20枚表示する
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
           const image = document.createElement("img");
           image.classList.add("image");
           image.src = `img/image${i}.jpeg`;
@@ -79,7 +79,7 @@
           image.style.height = `${size}px`;
           image.style.left = `${Math.random() * 100}vw`;
           image.style.animationDelay = `${Math.random() * 5}s`;
-          image.style.setProperty('--random-speed', Math.random() * 10) + 5; // 速度をランダムにする
+          image.style.setProperty('--random-speed', Math.random() * 6) + 16; // 速度をランダムにする
           image.style.setProperty('--random-rotation', Math.floor(Math.random() * 351) + 10); // 回転速度をランダムにする
           image.style.zIndex = Math.floor(Math.random() * 10); // z-indexをランダムに設定
           wrapper.appendChild(image);
