@@ -28,6 +28,8 @@
         animation-duration: calc(5s + 5s * var(--random-speed));
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
+        object-fit: cover;
+        padding: 0;
       }
       @keyframes rain {
         0% {
@@ -49,19 +51,39 @@
     <script>
       const wrapper = document.querySelector(".wrapper");
       const numOfImages = 35;
-      for (let i = 0; i < numOfImages; i++) {
-        const image = document.createElement("img");
-        image.classList.add("image");
-        image.src = `img/image${i}.jpeg`;
-        const size = Math.floor(Math.random() * 101) + 100; // 50px〜200pxの間でランダムに設定
-        image.style.width = `${size}px`;
-        image.style.height = `${size}px`;
-        image.style.left = `${Math.random() * 100}vw`;
-        image.style.animationDelay = `${Math.random() * 5}s`;
-        image.style.setProperty('--random-speed', Math.random() * 17) + 14; // 速度をランダムにする
-        image.style.setProperty('--random-rotation', Math.floor(Math.random() * 351) + 10); // 回転速度をランダムにする
-        image.style.zIndex = Math.floor(Math.random() * 10); // z-indexをランダムに設定
-        wrapper.appendChild(image);
+
+      // ブレークポイント450px以上の場合、35枚全て表示する
+      if (window.innerWidth > 450) {
+        for (let i = 0; i < numOfImages; i++) {
+          const image = document.createElement("img");
+          image.classList.add("image");
+          image.src = `img/image${i}.jpeg`;
+          const size = Math.floor(Math.random() * 101) + 100; // 100px〜200pxの間でランダムに設定
+          image.style.width = `${size}px`;
+          image.style.height = `${size}px`;
+          image.style.left = `${Math.random() * 100}vw`;
+          image.style.animationDelay = `${Math.random() * 5}s`;
+          image.style.setProperty('--random-speed', Math.random() * 17) + 14; // 速度をランダムにする
+          image.style.setProperty('--random-rotation', Math.floor(Math.random() * 351) + 10); // 回転速度をランダムにする
+          image.style.zIndex = Math.floor(Math.random() * 10); // z-indexをランダムに設定
+          wrapper.appendChild(image);
+        }
+      } else {
+        // ブレークポイント450px以下の場合、20枚表示する
+        for (let i = 0; i < 20; i++) {
+          const image = document.createElement("img");
+          image.classList.add("image");
+          image.src = `img/image${i}.jpeg`;
+          const size = Math.floor(Math.random() * 76) + 100; // 100px〜175pxの間でランダムに設定
+          image.style.width = `${size}px`;
+          image.style.height = `${size}px`;
+          image.style.left = `${Math.random() * 100}vw`;
+          image.style.animationDelay = `${Math.random() * 5}s`;
+          image.style.setProperty('--random-speed', Math.random() * 10) + 5; // 速度をランダムにする
+          image.style.setProperty('--random-rotation', Math.floor(Math.random() * 351) + 10); // 回転速度をランダムにする
+          image.style.zIndex = Math.floor(Math.random() * 10); // z-indexをランダムに設定
+          wrapper.appendChild(image);
+        }
       }
     </script>
   </body>
